@@ -12,7 +12,6 @@
 
 ## How to run
 - You need to replace the `apiKey` value in `Services/NetworkManager.swift` with your token
-- 
 
 ## Technologies Used
 - Kingfisher v.7.2.0
