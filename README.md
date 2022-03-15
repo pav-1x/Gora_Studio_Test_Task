@@ -18,6 +18,3 @@
 - Configure 'prepareForReuse' method for cells
 - Configure 'searchBar'
 - Install DB
-
-## Authors
-- Maxim Pavlovich - [@max-pav-love](https://github.com/max-pav-love) - feel free to contact me!
