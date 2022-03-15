@@ -1,5 +1,5 @@
 # Gora studio test task (Last News)
-> Helps you to actual news
+> Shows you last actual news
 
 ## Features
 - Fetching last news by seven categories
