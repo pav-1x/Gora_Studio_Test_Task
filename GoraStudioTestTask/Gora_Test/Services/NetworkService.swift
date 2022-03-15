@@ -10,7 +10,7 @@ import Alamofire
 
 final class NetworkManager {
     
-    let apiKey = "bc7daae3daef4d9fb290c9d55519db09"
+    let apiKey = "YOUR_API_KEY_HERE"
     let url = "https://newsapi.org/v2/top-headlines?country=us&pageSize=20&category="
     
     // MARK: - Make NetworkRequest
