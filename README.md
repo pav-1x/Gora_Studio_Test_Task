@@ -1,4 +1,4 @@
-# Gora studio test task (Last News)
+# Gora studio test task
 > Shows you the last actual news
 
 ## Features
@@ -6,7 +6,7 @@
 - Open article by URL
 
 ## Screenshots
-- Last News demo:
+- Demo:
 
 <img src="https://github.com/pav-1x/Gora_Studio_Test_Task/blob/main/Screenshots/1.png" width="214" height="463"> <img src="https://github.com/pav-1x/Gora_Studio_Test_Task/blob/main/Screenshots/2.png" width="214" height="463"> <img src="https://github.com/pav-1x/Gora_Studio_Test_Task/blob/main/Screenshots/3.png" width="214" height="463">
 
