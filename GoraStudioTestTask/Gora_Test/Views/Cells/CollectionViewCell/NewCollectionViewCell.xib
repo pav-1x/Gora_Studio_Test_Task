@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewCollectionViewCell" id="gTV-IL-0wX" customClass="NewCollectionViewCell" customModule="Gora_Test" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="188" height="194"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="188" height="194"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kbo-s7-jPz">
+                        <rect key="frame" x="0.0" y="0.0" width="188" height="194"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                    <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLJ-Fa-E7i" customClass="GradientView" customModule="Gora_Test" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="188" height="194"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jo-Wb-w6X">
+                        <rect key="frame" x="24" y="8" width="148" height="186"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1Jo-Wb-w6X" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="2GE-PR-E9e"/>
+                <constraint firstAttribute="trailing" secondItem="pLJ-Fa-E7i" secondAttribute="trailing" id="8Yi-F8-Slt"/>
+                <constraint firstItem="pLJ-Fa-E7i" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Cc8-jD-OrD"/>
+                <constraint firstItem="pLJ-Fa-E7i" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LTN-FR-lHh"/>
+                <constraint firstAttribute="trailing" secondItem="kbo-s7-jPz" secondAttribute="trailing" id="Nzj-bb-zqf"/>
+                <constraint firstItem="1Jo-Wb-w6X" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="RVa-oG-cuJ"/>
+                <constraint firstItem="kbo-s7-jPz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SSl-8l-fOr"/>
+                <constraint firstAttribute="trailing" secondItem="1Jo-Wb-w6X" secondAttribute="trailing" constant="16" id="bJy-Xo-5co"/>
+                <constraint firstAttribute="bottom" secondItem="kbo-s7-jPz" secondAttribute="bottom" id="bKK-eU-3Ul"/>
+                <constraint firstAttribute="bottom" secondItem="1Jo-Wb-w6X" secondAttribute="bottom" id="dR3-7z-QPc"/>
+                <constraint firstAttribute="bottom" secondItem="pLJ-Fa-E7i" secondAttribute="bottom" id="s4a-FL-1b3"/>
+                <constraint firstItem="kbo-s7-jPz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yTi-0I-AZc"/>
+            </constraints>
+            <size key="customSize" width="188" height="194"/>
+            <connections>
+                <outlet property="gradientView" destination="pLJ-Fa-E7i" id="VoH-9h-2tn"/>
+                <outlet property="newImage" destination="kbo-s7-jPz" id="7vE-ue-88A"/>
+                <outlet property="newLabel" destination="1Jo-Wb-w6X" id="H8a-bW-aYg"/>
+            </connections>
+            <point key="canvasLocation" x="237.68115942028987" y="162.05357142857142"/>
+        </collectionViewCell>
+    </objects>
+</document>
