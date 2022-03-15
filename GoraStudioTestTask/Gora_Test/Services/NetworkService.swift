@@ -10,7 +10,7 @@ import Alamofire
 
 final class NetworkManager {
     
-    let apiKey = "YOUR_API_KEY_HERE"
+    let apiKey = "bc7daae3daef4d9fb290c9d55519db09"
     let url = "https://newsapi.org/v2/top-headlines?country=us&pageSize=20&category="
     
     // MARK: - Make NetworkRequest
@@ -24,7 +24,9 @@ final class NetworkManager {
             request.responseDecodable(of: News.self) { response in
                 switch response.result {
                 case .success(let data):
+                    if data.articles != nil {
                     result[categoryName] = data
+                    }
                 case .failure(let error):
                     print(error)
                 }

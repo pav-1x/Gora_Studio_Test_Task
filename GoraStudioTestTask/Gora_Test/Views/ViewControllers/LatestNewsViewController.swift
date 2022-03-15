@@ -13,6 +13,10 @@ class LatestNewsViewController: UIViewController {
     // MARK: - Properties
     private let networkManager = NetworkManager()
     private var news = [NewsCategories: News]()
+    private var sortedCategories: [NewsCategories] {
+        Array(filteredNews.keys).sorted(by: { $0.name < $1.name })
+    }
+    private var filteredNews = [NewsCategories: News]()
     
     // MARK: - UITableView
     private let table: UITableView = {
@@ -24,8 +28,9 @@ class LatestNewsViewController: UIViewController {
         return table
     }()
     
+    // MARK: - UIActivityIndicatorView
     private let activityIndicator: UIActivityIndicatorView = {
-       let indicator = UIActivityIndicatorView()
+        let indicator = UIActivityIndicatorView()
         indicator.startAnimating()
         indicator.hidesWhenStopped = true
         indicator.style = .medium
@@ -36,9 +41,7 @@ class LatestNewsViewController: UIViewController {
     private lazy var searchController: UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchResultsUpdater = self
-        sc.obscuresBackgroundDuringPresentation = false
         sc.searchBar.placeholder = "Find news..."
-        sc.searchBar.autocapitalizationType = .allCharacters
         return sc
     }()
     
@@ -77,8 +80,42 @@ class LatestNewsViewController: UIViewController {
         setupTableView()
         networkManager.fetchLastNews { [weak self] news in
             self?.news = news
-            self?.table.reloadData()
+            self?.reloadData()
+            self?.activityIndicator.stopAnimating()
         }
+    }
+    
+    // MARK: - Filter
+    private func applyFilter() {
+        filteredNews = news.compactMapValues { new -> News? in
+            guard
+                let articles = new.articles
+            else {
+                return nil
+            }
+            let filteredArticles = articles.filter { article in
+                guard
+                    let title = article.title,
+                    let description = article.description,
+                    let searchText = searchController.searchBar.text
+                else {
+                    return false
+                }
+                let result = searchText.isEmpty ||
+                title.localizedCaseInsensitiveContains(searchText) ||
+                description.localizedCaseInsensitiveContains(searchText)
+                return result
+            }
+            if !filteredArticles.isEmpty {
+                return News(articles: filteredArticles)
+            }
+            return nil
+        }
+    }
+    
+    private func reloadData() {
+        applyFilter()
+        table.reloadData()
     }
     
 }
@@ -89,16 +126,14 @@ extension LatestNewsViewController: UITableViewDataSource {
         guard
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: NewTableViewCell.identifier,
-                for: indexPath) as? NewTableViewCell,
-            let category = NewsCategories(
-                rawValue: indexPath.section)
+                for: indexPath) as? NewTableViewCell
         else {
             return UITableViewCell()
         }
-        cell.collectionView = nil
-        cell.news = news[category]
+        let category = sortedCategories[indexPath.section]
+        cell.news = filteredNews[category]
         cell.delegate = self
-        activityIndicator.stopAnimating()
+        cell.collectionView.reloadData()
         return cell
     }
     
@@ -107,12 +142,12 @@ extension LatestNewsViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        news.count
+        filteredNews.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let category = NewsCategories(rawValue: section)
-        return category?.name
+        let category = sortedCategories[section]
+        return category.name
     }
 }
 
@@ -134,11 +169,12 @@ extension LatestNewsViewController: UITableViewDelegate {
 // MARK: - Extension: UISearchResultsUpdating
 extension LatestNewsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let _ = searchController.searchBar.text else { return }
+        reloadData()
     }
     
 }
 
+// MARK: - Extension: SafariDelegate
 extension LatestNewsViewController: SafariDelegate {
     func openArticle(by url: URL) {
         let vc = SFSafariViewController(url: url)
@@ -147,6 +183,7 @@ extension LatestNewsViewController: SafariDelegate {
     }
 }
 
+// MARK: - Extension: SFSafariViewControllerDelegate
 extension LatestNewsViewController: SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         dismiss(animated: true)

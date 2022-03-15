@@ -97,6 +97,7 @@
 		1553B4AC27DBFA7700BA8238 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				15966C1427DE518300C6133F /* ViewControllers */,
 				1553B4BC27DBFDDF00BA8238 /* Cells */,
 			);
 			path = Views;
@@ -131,7 +132,6 @@
 		1553B4BC27DBFDDF00BA8238 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				15966C1427DE518300C6133F /* ViewControllers */,
 				1553B4C827DC0E3D00BA8238 /* CollectionViewCell */,
 				1553B4C727DC0E2900BA8238 /* TableViewCell */,
 			);

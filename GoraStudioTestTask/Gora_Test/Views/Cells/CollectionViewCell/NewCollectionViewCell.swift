@@ -34,15 +34,8 @@ class NewCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Configure cells with data method
     func setupCells(from article: Article) {
-        clearContent()
         newLabel.text = article.title
         newImage.kf.setImage(with: URL(string: article.urlToImage ?? ""))
-    }
-    
-    // MARK: - Trying to clear cells when creating new reusable cells to avoid clipping but this one didn`t work. Like 'prepareForReuse' method.
-    func clearContent() {
-        newImage.image = UIImage()
-        newLabel.text = ""
     }
     
 }
