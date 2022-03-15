@@ -4,6 +4,7 @@
 ## Features
 - Fetching last news by seven categories
 - Open article by URL
+- Search news by title or description
 
 ## Screenshots
 - Demo:
@@ -18,6 +19,4 @@
 - Alamofire v.5.5.0
 
 ## Need to improve:
-- Configure `prepareForReuse` method for cells
-- Configure `searchBar`
 - Install DB
